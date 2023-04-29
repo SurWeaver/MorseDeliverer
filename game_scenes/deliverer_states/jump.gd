@@ -22,7 +22,7 @@ func _update(delta: float) -> void:
 	current_jump_time += delta
 
 	if current_jump_time >= jump_time_amount:
-		emit_signal("queried_transition_to", "Run")
+		emit_signal("queried_transition_to", "Run", { "emit_splash": true })
 
 
 func get_jump_height() -> float:

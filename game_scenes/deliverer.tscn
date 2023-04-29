@@ -305,10 +305,11 @@ shape = SubResource( 4 )
 
 [node name="TearSplash" parent="SlideEffects" instance=ExtResource( 10 )]
 position = Vector2( -6, -12 )
+local_coords = false
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
-initial_state = NodePath("Run")
+initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )
@@ -328,6 +329,7 @@ script = ExtResource( 5 )
 script = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
 anims/RESET = SubResource( 2 )
 anims/fall = SubResource( 8 )
 anims/idle = SubResource( 3 )

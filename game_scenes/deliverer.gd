@@ -33,9 +33,6 @@ func _on_state_machine_transitioned(old_state_name: String, new_state_name: Stri
 	toggle_slide_effect_visibility(is_sliding)
 	toggle_slide_collision(is_sliding)
 
-	if old_state_name == "Jump" and new_state_name == "Run":
-		emit_back_step_splash()
-		emit_front_step_splash()
 
 func toggle_slide_effect_visibility(visibility: bool) -> void:
 	for child in $SlideEffects.get_children():
