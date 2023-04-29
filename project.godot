@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Deliverer",
 "language": "GDScript",
 "path": "res://game_scenes/deliverer.gd"
+}, {
+"base": "Node",
+"class": "Morse",
+"language": "GDScript",
+"path": "res://tools/morse.gd"
 } ]
 _global_script_class_icons={
-"Deliverer": ""
+"Deliverer": "",
+"Morse": ""
 }
 
 [application]
