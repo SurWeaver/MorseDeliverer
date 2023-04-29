@@ -18,10 +18,22 @@ _global_script_classes=[ {
 "class": "Morse",
 "language": "GDScript",
 "path": "res://tools/morse.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://tools/state_machine/state.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://tools/state_machine/state_machine.gd"
 } ]
 _global_script_class_icons={
 "Deliverer": "",
-"Morse": ""
+"Morse": "",
+"State": "",
+"StateMachine": ""
 }
 
 [application]
