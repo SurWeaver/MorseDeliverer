@@ -1,7 +1,7 @@
 extends DelivererState
 
 
-const JUMP_HEIGHT: float = 60.0
+export var jump_height: float = 60.0
 
 
 export var jump_time_amount: float
@@ -17,6 +17,8 @@ func _enter(_message: Dictionary = {}) -> void:
 	current_jump_time = 0
 
 func _update(delta: float) -> void:
+	deliverer.move(delta)
+
 	deliverer.position.y = ground_height - get_jump_height()
 
 	current_jump_time += delta
@@ -26,4 +28,4 @@ func _update(delta: float) -> void:
 
 
 func get_jump_height() -> float:
-	return jump_curve.interpolate(current_jump_time / jump_time_amount) * JUMP_HEIGHT
+	return jump_curve.interpolate(current_jump_time / jump_time_amount) * jump_height

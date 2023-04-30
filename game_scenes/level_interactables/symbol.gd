@@ -25,7 +25,7 @@ func set_symbol_type(symbol_type: int) -> void:
 	$Sprite.frame = 0 if symbol_type == Type.DOT else 1
 
 
-func _on_symbol_area_entered(_area: Area2D) -> void:
+func _on_symbol_area_entered(area: Area2D) -> void:
 	emit_signal("player_picked_symbol", self)
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play("disappear")

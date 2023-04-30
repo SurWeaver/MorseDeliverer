@@ -9,6 +9,9 @@ export var outer_effect_node_path: NodePath
 onready var outer_effect_node = get_node(outer_effect_node_path)
 
 
+func move(delta: float):
+	position.x += delta * 250
+
 func play_animation(animation_name: String) -> void:
 	if $AnimationPlayer.is_playing():
 		$AnimationPlayer.stop()
@@ -39,10 +42,12 @@ func toggle_slide_effect_visibility(visibility: bool) -> void:
 		(child as CPUParticles2D).emitting = visibility
 
 func toggle_slide_collision(is_sliding: bool) -> void:
-	$StandCollision.disabled = is_sliding
-	$SlideCollision.disabled = not is_sliding
+	$StandCollision.set_deferred("disabled", is_sliding)
+	$SlideCollision.set_deferred("disabled", not is_sliding)
 
 
 func _on_deliverer_area_entered(area: Area2D) -> void:
 	if area.is_in_group("obstacle"):
 		$StateMachine.transition_to("Fall")
+	if area.is_in_group("finish"):
+		$StateMachine.transition_to("Finish")

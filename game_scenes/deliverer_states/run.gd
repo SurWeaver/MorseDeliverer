@@ -8,6 +8,8 @@ func _enter(message: Dictionary = {}) -> void:
 		deliverer.emit_front_step_splash()
 
 func _update(delta: float) -> void:
+	deliverer.move(delta)
+
 	if Input.is_action_just_pressed("jump"):
 		emit_signal("queried_transition_to", "Jump")
 	elif Input.is_action_pressed("slide"):

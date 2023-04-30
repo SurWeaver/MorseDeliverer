@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://game_scenes/deliverer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_scenes/following_camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sprites/ground.png" type="Texture" id=3]
+[ext_resource path="res://game_scenes/managers/message_creator.gd" type="Script" id=4]
+[ext_resource path="res://game_scenes/managers/obstacle_creator.gd" type="Script" id=5]
+[ext_resource path="res://game_scenes/level.gd" type="Script" id=6]
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 64, 0 )
+texture = ExtResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 128, 0 )
+texture = ExtResource( 3 )
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 192, 0 )
+texture = ExtResource( 3 )
+
+[node name="Sprite5" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 256, 0 )
+texture = ExtResource( 3 )
+
+[node name="Sprite6" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 320, 0 )
+texture = ExtResource( 3 )
+
+[node name="Sprite7" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 384, 0 )
+texture = ExtResource( 3 )
+
+[node name="Sprite8" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 448, 0 )
+texture = ExtResource( 3 )
+
+[node name="Deliverer" parent="." instance=ExtResource( 1 )]
+z_index = 2
+outer_effect_node_path = NodePath("../Effects")
+
+[node name="Effects" type="Node2D" parent="."]
+z_index = 4
+
+[node name="LetterPacks" type="Node2D" parent="."]
+z_index = 5
+
+[node name="FollowingCamera" parent="." instance=ExtResource( 2 )]
+following_node_path = NodePath("../Deliverer")
+
+[node name="MessageCreator" type="Node" parent="."]
+script = ExtResource( 4 )
+node_with_letter_packs_path = NodePath("../LetterPacks")
+
+[node name="ObstacleCreator" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[connection signal="finished" from="MessageCreator" to="ObstacleCreator" method="_on_message_creator_finished"]
+[connection signal="finished" from="ObstacleCreator" to="." method="_on_obstacle_creator_finished"]
