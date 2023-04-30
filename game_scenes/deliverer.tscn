@@ -275,6 +275,7 @@ tracks/2/keys = {
 }
 
 [node name="Deliverer" type="Area2D"]
+collision_mask = 6
 script = ExtResource( 2 )
 
 [node name="Character" type="Node2D" parent="."]
