@@ -16,10 +16,8 @@ func add_symbol(symbol: Node2D) -> void:
 
 	if Random.get_int(0, 1) == 1:
 		$JumpPosition.add_child(symbol)
-		print("jump")
 	else:
 		$FloorPosition.add_child(symbol)
-		print("floor")
 
 	available_for_symbol = false
 

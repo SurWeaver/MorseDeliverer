@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui_scenes/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://ui_scenes/sound_slider.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/cour.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 406.0
+margin_top = 203.0
+margin_right = 618.0
+margin_bottom = 396.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 212.0
+margin_bottom = 19.0
+text = "Select level:"
+align = 1
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 212.0
+margin_bottom = 48.0
+text = "First, pretty simple"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 212.0
+margin_bottom = 77.0
+text = "Something curious"
+
+[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 81.0
+margin_right = 212.0
+margin_bottom = 106.0
+text = "Alpha and Omega"
+
+[node name="Button4" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 110.0
+margin_right = 212.0
+margin_bottom = 135.0
+text = "Answer to everything"
+
+[node name="Button5" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 139.0
+margin_right = 212.0
+margin_bottom = 164.0
+text = "Try this..."
+
+[node name="CreateLevelButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 168.0
+margin_right = 212.0
+margin_bottom = 193.0
+text = "Create YOUR level"
+
+[node name="SoundSlider" parent="." instance=ExtResource( 3 )]
+margin_left = 15.0
+margin_top = 515.0
+margin_right = 175.0
+margin_bottom = 555.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 341.0
+margin_bottom = 188.0
+custom_fonts/font = SubResource( 1 )
+text = "Little tutorial:
+Jump - SPACE, W, ↑, d-pad up or any stick up on a gamepad too.
+Slide - S, ↓, d-pad down or any stick down on a gamepad too.
+
+To start running you need to press Jump button."
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 210.0
+margin_top = 415.0
+margin_right = 1016.0
+margin_bottom = 586.0
+custom_fonts/font = SubResource( 1 )
+text = "You need to collect all the scattered morse code
+ and deliver the report.
+Evade red obstacles.
+
+Made by SurWeaver.
+My first LD & Compo"
+align = 2
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="go_to_level" binds= [ "sos", 0.3 ]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="go_to_level" binds= [ "something curious!", 0.6 ]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button3" to="." method="go_to_level" binds= [ "i am the storm that is approaching!", 1.0 ]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button4" to="." method="go_to_level" binds= [ "42", 0.5 ]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button5" to="." method="go_to_level" binds= [ "I was deeply concerned that I would not be able to complete what I had planned in this game. Thank you for getting through this level!", 1.0 ]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreateLevelButton" to="." method="_on_create_level_button_pressed"]

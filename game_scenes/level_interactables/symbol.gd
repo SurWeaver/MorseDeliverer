@@ -10,6 +10,8 @@ const PickSymbolSplash = preload("res://effects/pick_symbol_splash.tscn")
 
 var type: int
 
+var symbol_index: int
+
 
 func _ready():
 	randomize_hover_animation()

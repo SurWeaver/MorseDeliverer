@@ -64,3 +64,10 @@ static func get_morse_message_symbols(source_message: String) -> PoolStringArray
 		if MORSE_DICT.has(symbol):
 			encoded_symbols.append(MORSE_DICT[symbol])
 	return encoded_symbols
+
+static func get_character_from_morse(morse_code: String) -> String:
+	var index = MORSE_DICT.values().find(morse_code)
+	if index == -1:
+		return "?"
+
+	return MORSE_DICT.keys()[index]

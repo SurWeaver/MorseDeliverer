@@ -7,7 +7,13 @@ func _enter(message: Dictionary = {}) -> void:
 		deliverer.emit_back_step_splash()
 		deliverer.emit_front_step_splash()
 
+
+
 func _update(delta: float) -> void:
+	if deliverer.is_queried_to_relax:
+		emit_signal("queried_transition_to", "Relax")
+		return
+
 	deliverer.move(delta)
 
 	if Input.is_action_just_pressed("jump"):
