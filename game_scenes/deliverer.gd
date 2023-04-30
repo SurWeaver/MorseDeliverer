@@ -4,13 +4,14 @@ extends Area2D
 
 const StepSplashScene = preload("res://effects/step_splash.tscn")
 
+export var speed: float = 300
 
 export var outer_effect_node_path: NodePath
 onready var outer_effect_node = get_node(outer_effect_node_path)
 
 
 func move(delta: float):
-	position.x += delta * 250
+	position.x += speed * delta
 
 func play_animation(animation_name: String) -> void:
 	if $AnimationPlayer.is_playing():
